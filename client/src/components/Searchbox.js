@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Form, Button, FormControl, InputGroup } from 'react-bootstrap'
+import {
+	Form,
+	Button,
+	FormControl,
+	InputGroup,
+	Dropdown,
+} from 'react-bootstrap'
 import Loader from './Loader'
 import axios from 'axios'
 
@@ -9,6 +15,7 @@ const Searchbox = () => {
 	const [loading, setLoading] = useState(true)
 	const [cats, setCats] = useState([])
 	const [keyword, setKeyword] = useState('')
+	const [search, setSearch] = useState(false)
 
 	useEffect(() => {
 		getCats()
@@ -31,8 +38,18 @@ const Searchbox = () => {
 		}
 	}
 
-	const search = (keyword) => {
+	const performSearch = (keyword) => {
 		setKeyword(keyword)
+		if (keyword === '') {
+			getCats()
+			setSearch(false)
+		} else {
+			const newCats = cats.filter((cat) => {
+				return cat.name.toLowerCase().includes(keyword.toLowerCase())
+			})
+			setCats(newCats)
+			setSearch(true)
+		}
 	}
 
 	return (
@@ -50,8 +67,14 @@ const Searchbox = () => {
 							placeholder='Enter your breed'
 							className='me-2'
 							onChange={(e) =>
-								search(e.target.value)
+								performSearch(e.target.value)
 							}></FormControl>
+						{search &&
+							cats.map((c) => (
+								<Dropdown.Item href={`/search/${c.name}`}>
+									{c.name}
+								</Dropdown.Item>
+							))}
 					</InputGroup>
 				</Form>
 			)}
