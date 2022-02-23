@@ -1,10 +1,13 @@
 import axios from 'axios'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const getAllCats = async (req, res) => {
 	try {
+		console.log(process.env.API_KEY)
 		const config = {
 			headers: {
-				'X-Api-Key': '7ba2ab71-e19e-4eef-a9b9-3f9daa7ec778',
+				'X-Api-Key': process.env.API_KEY,
 			},
 		}
 
@@ -26,7 +29,7 @@ const getDetails = async (req, res) => {
 	try {
 		const config = {
 			headers: {
-				'X-Api-Key': '7ba2ab71-e19e-4eef-a9b9-3f9daa7ec778',
+				'X-Api-Key': process.env.API_KEY,
 			},
 		}
 
@@ -48,7 +51,7 @@ const getImages = async (req, res) => {
 	try {
 		const config = {
 			headers: {
-				'X-Api-Key': '7ba2ab71-e19e-4eef-a9b9-3f9daa7ec778',
+				'X-Api-Key': process.env.API_KEY,
 			},
 		}
 
