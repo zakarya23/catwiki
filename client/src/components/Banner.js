@@ -20,6 +20,14 @@ const Banner = () => {
 					}}>
 					CatWiki
 				</h1>
+				<p
+					style={{
+						color: 'white',
+						textAlign: 'center',
+						paddingTop: '2rem',
+					}}>
+					Get to know more about your cat breed
+				</p>
 				<Searchbox />
 			</Card.ImgOverlay>
 		</Card>
