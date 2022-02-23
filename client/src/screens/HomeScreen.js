@@ -1,7 +1,13 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
+import Banner from '../components/Banner'
 
 const HomeScreen = () => {
-	return <div>HomeScreen</div>
+	return (
+		<Container>
+			<Banner />
+		</Container>
+	)
 }
 
 export default HomeScreen

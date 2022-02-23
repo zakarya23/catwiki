@@ -1,11 +1,13 @@
-const path = require('path')
-const express = require('express')
+import path from 'path'
+import express from 'express'
 import dotenv from 'dotenv'
 const PORT = process.env.PORT || 3001
 import catRouter from './routers/catRouter.js'
 
 dotenv.config()
 const app = express()
+app.use(express.json())
+const __dirname = path.resolve()
 
 app.use('/api/cats', catRouter)
 // Have Node serve the files for our built React app
