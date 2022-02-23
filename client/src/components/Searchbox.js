@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button, FormControl, InputGroup } from 'react-bootstrap'
 import Loader from './Loader'
 import axios from 'axios'
 
 const Searchbox = () => {
+	const navigate = useNavigate()
 	const [loading, setLoading] = useState(true)
 	const [cats, setCats] = useState([])
+	const [keyword, setKeyword] = useState('')
 
 	useEffect(() => {
 		getCats()
@@ -18,9 +21,20 @@ const Searchbox = () => {
 		})
 	}
 
-	const submitHandler = () => {}
+	const submitHandler = (e) => {
+		e.preventDefault()
+		console.log(keyword)
+		if (keyword.trim()) {
+			navigate(`/search/${keyword}`)
+		} else {
+			navigate('/')
+		}
+	}
 
-	const search = () => {}
+	const search = (keyword) => {
+		setKeyword(keyword)
+	}
+
 	return (
 		<>
 			{loading ? (
