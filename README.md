@@ -18,5 +18,9 @@ For backend:
 - Routes(For handling similar routing for the backend) 
 - Controllers (For functions that are handled by the routes) 
 - Try catches for any potential errors while fetching. 
+- Dotenv (For hiding private stuff such as the key from API) 
+
+Build the heroku build file and then hosted on heroku from the CLI. Added the key as a private in the heroku config. And succedfully hosted on heroku. 
+The link to the live website : https://zakscatwiki.herokuapp.com/
 
 Overall it was a fun project to do within 90 minutes, UI looks really bad and I apologise for that. Some internet errors kept ruining my api fetches so had to restart it a couple times but didnt go above the 90 minute mark. 
